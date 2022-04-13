@@ -51,25 +51,20 @@ void FndDisplay(int position, int num){
 int main(){
 	int data[5]={0,1,2,3,4};
 	int open[6]={0,1,2,3,4,5};
-	while(1){
+	Init(-1);
+	clock_t t1,t2;
+	int time=0;
+	t1=clock();
+	for(time=0; time<100; time++){
+	
 		int pos;
-		Init(open[5]);
-		clock_t t1, t2;
-		t1=clock();
-		while(1){
-			for(pos=0; pos<5; pos++){
-				FndDisplay(open[pos], data[pos]);
-				delay(1);
-			}
-			t2=clock();
-			if((double)(t2-t1)/1000>5)
-				break;
+		for(pos=0; pos<5; pos++){
+			FndDisplay(open[pos], data[pos]);
+			delay(1);
 		}
-		int temp=open[0];
-		for(pos=0; pos<5; pos++)
-			open[pos]=open[pos+1];
-		open[5]=temp;
 	}
+	t2=clock();
+	printf("%lf",(t2-t1)/(double)1000);
 	return 0;
 
 }

@@ -29,8 +29,8 @@ void FndSelect(int position){
 	for(i=0; i<6; i++){
 		if(i==position)
 			digitalWrite(FndSelectPin[i], LOW);
-		else
-			digitalWrite(FndSelectPin[i], HIGH);
+		//else
+		//	digitalWrite(FndSelectPin[i], HIGH);
 	}
 
 }
@@ -57,15 +57,12 @@ int main(){
 		clock_t t1, t2;
 		t1=clock();
 		int a=0;
-		while(1){
-			t2=clock();
-			for(pos=0; pos<6; pos++){
-				FndDisplay(pos,g[pos]);
-				delay(1);
-			}
-			if((double)(t2-t1)/1000>0.01)
-				break;
+		int time=0;
+		for(pos=0; pos<6; pos++){
+			FndDisplay(pos,g[pos]);
+			delay(1);
 		}
+		delay(1000);
 		g[0]++;
 		if(g[0]>=10){
 			g[0]=0;
